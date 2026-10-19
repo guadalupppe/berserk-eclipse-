@@ -1,0 +1,144 @@
+/* ===== ESTILOS GENERALES ===== */
+body {
+  background-color: #0B0B0B; /* negro carbón */
+  margin: 0;
+}
+
+/* ===== FONDO CON IMAGEN (luna-roja.jpg) ===== */
+/* Imagen fija detrás de todo, opacidad 0.55 y zoom lento de 40 segundos.
+   Se mantiene a COLOR para conservar el rojo de la luna de sangre. */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background-image: url("luna-roja.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.55;
+  animation: zoomLento 40s ease-in-out infinite alternate;
+}
+
+@keyframes zoomLento {
+  from { transform: scale(1); }
+  to   { transform: scale(1.15); }
+}
+
+/* ===== VIÑETA OSCURA EN LOS BORDES ===== */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(11, 11, 11, 0) 40%, #0B0B0B 100%);
+}
+
+/* ===== CONTENEDOR DE TEXTO ===== */
+.contenedor {
+  max-width: 800px;
+  margin: 40px auto 0 auto;
+  padding: 40px;
+  background-color: rgba(11, 11, 11, 0.85);
+  border: 1px solid #B11226;
+  animation: aparecer 1.5s ease-in; /* fade de entrada de 1.5 segundos */
+}
+
+@keyframes aparecer {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ===== TÍTULOS ===== */
+/* h1: Cinzel, 46px, rojo sangre, centrado */
+h1 {
+  font-family: "Cinzel", serif;
+  font-size: 46px;
+  color: #B11226;
+  text-align: center;
+}
+
+/* Línea decorativa roja (120px x 2px) centrada debajo del h1 */
+h1::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 2px;
+  background-color: #B11226;
+  margin: 16px auto 0 auto;
+}
+
+/* h2: Cinzel, 26px, gris ceniza */
+h2 {
+  font-family: "Cinzel", serif;
+  font-size: 26px;
+  color: #9A9A9A;
+}
+
+/* ===== TEXTO ===== */
+/* p: EB Garamond, 20px, blanco hueso, interlineado 1.7 */
+p {
+  font-family: "EB Garamond", serif;
+  font-size: 20px;
+  color: #E6E1D8;
+  line-height: 1.7;
+}
+
+/* ===== ENLACES ===== */
+/* a: EB Garamond, gris claro, negrita y CON subrayado */
+a {
+  font-family: "EB Garamond", serif;
+  color: #D9D4C7;
+  font-weight: bold;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+
+/* a:hover: rojo y SIN subrayado */
+a:hover {
+  color: #E03A3A;
+  text-decoration: none;
+}
+
+/* ===== IMAGEN ===== */
+img {
+  display: block;
+  margin: 30px auto;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Luna de la bienvenida: emblema circular de 280px */
+.luna {
+  width: 280px;
+  border-radius: 50%;
+}
+
+/* ===== VIDEO ===== */
+iframe {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+}
+
+/* ===== PIE DE PÁGINA ===== */
+footer {
+  max-width: 800px;
+  margin: 30px auto 40px auto;
+  padding: 10px 40px;
+  background-color: rgba(11, 11, 11, 0.85);
+  border: 1px solid #B11226;
+  text-align: center;
+  animation: aparecer 1.5s ease-in;
+}
+
+/* Respeta a quien prefiere sin animaciones */
+@media (prefers-reduced-motion: reduce) {
+  body::before, .contenedor, footer { animation: none; }
+}
